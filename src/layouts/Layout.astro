@@ -1,11 +1,18 @@
+---
+const { titulo, descripcion } = Astro.props; // Recibe título y descripción desde las páginas
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{titulo}</title>
+		<meta name="description" content={descripcion || "Bienvenido a mi sitio web"} />
+		  
 	</head>
 	<body>
 		<slot />
@@ -19,4 +26,8 @@
 		width: 100%;
 		height: 100%;
 	}
+	body {
+  font-family: 'Poppins', sans-serif;
+}
+
 </style>

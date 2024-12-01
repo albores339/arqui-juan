@@ -1,11 +1,414 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const titulo = "Arquitecto Juan de Dios - Proyectos y Servicios de Arquitectura";
+const descripcion = "Arquitecto para proyecto arquitectónico y de construcción. Revisor de obra independiente, despacho de arquitectura en Tuxtla Gutiérrez, Chiapas, México. Servicios de arquitectura de casas, comercial, sostenible, paisajista e interiorista.";
+
+let isOpen = false;
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout titulo={titulo} descripcion={descripcion}>
+	<nav class="fixed top-0 left-1/2 transform -translate-x-1/2 w-3/4 h-16 bg-white/80 z-50 m-4 rounded-xl backdrop-blur-lg flex items-center justify-between px-4 md:px-8 shadow-2xl border border-sky-700">
+		<!-- Logo -->
+		<div class="flex items-center space-x-4">
+		  <img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1732935997/logo_arqui_k4yfps.png" alt="Logo de Arqui Juan" class="h-10 w-10">
+		  <span class="font-semibold text-lg">Arqui Juan</span>
+		</div>
+	  
+		<!-- Opciones de Navegación Desktop -->
+		<ul class="hidden md:flex space-x-6 font-medium">
+		  <li><a href="#inicio" class="hover:underline">Inicio</a></li>
+		  <li><a href="#servicios" class="hover:underline">Servicios</a></li>
+		  <li><a href="#contacto" class="hover:underline">Contacto</a></li>
+		</ul>
+	  
+		<!-- Menú hamburguesa -->
+		<div class="md:hidden flex items-center">
+		  <button class="text-sky-700 focus:outline-none" id="hamburger-menu" aria-label="Abrir menú">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+			</svg>
+		  </button>
+		</div>
+	  </nav>
+	  
+	  <!-- Menú móvil -->
+	  <div id="mobile-menu" class="md:hidden fixed top-20 left-1/2 transform -translate-x-1/2 w-3/4 bg-white shadow-md z-40 hidden rounded-xl">
+		<ul class="flex flex-col space-y-4 px-4 py-6 font-medium">
+		  <li><a href="#inicio" class="hover:underline block">Inicio</a></li>
+		  <li><a href="#servicios" class="hover:underline block">Servicios</a></li>
+		  <li><a href="#contacto" class="hover:underline block">Contacto</a></li>
+		</ul>
+	  </div>
+	  
+	  <!-- Script para abrir/cerrar menú -->
+	  <script>
+		const hamburgerMenu = document.getElementById("hamburger-menu");
+		const mobileMenu = document.getElementById("mobile-menu");
+	  
+		hamburgerMenu.addEventListener("click", () => {
+		  mobileMenu.classList.toggle("hidden");
+		});
+	  
+		// Cerrar el menú al hacer clic en un enlace
+		const menuLinks = mobileMenu.querySelectorAll("a");
+		menuLinks.forEach(link => {
+		  link.addEventListener("click", () => {
+			mobileMenu.classList.add("hidden");
+		  });
+		});
+	  </script>
+
+  <!-- Hero Section -->
+  <header id="inicio" class="relative bg-cover bg-center h-[640px] md:h-[480px] mb-10 md:mb-0" style="background-image: url('https://res.cloudinary.com/dnytuotnv/image/upload/v1732928434/historia1_cpllnt.jpg');">
+    <div class="absolute inset-0 bg-black opacity-75 "></div> <!-- Overlay to darken the image -->
+    <div class="relative z-10 flex flex-col md:flex-row items-center justify-center h-full text-center text-white px-4 gap-4 max-w-6xl mx-auto">
+      <h1 class="mt-48 md:mt-0 text-3xl md:text-4xl font-bold leading-tight my-4 md:w-3/4">
+        ¿Buscas: despacho arquitectura, o arquitecto cerca de mi?... ¡Lo encontraste!
+      </h1>
+      <div class="text-lg md:text-xl mb-8 max-w-xl md:mt-24">
+		<p class="mb-4">
+		  Contacta e iniciemos tu proyecto con alguno de nuestros servicios
+		</p>
+		<ul class="space-y-2 m-4 justify-center">
+		  <li class="flex items-center justify-center">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-green-500 mr-2" viewBox="0 0 24 24">
+			  <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L10 15.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-9 9A1 1 0 0 1 10 18z" clip-rule="evenodd"/>
+			</svg>
+			Diseño de negocios y locales comerciales
+		  </li>
+		  <li class="flex items-center justify-center">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-green-500 mr-2" viewBox="0 0 24 24">
+			  <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L10 15.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-9 9A1 1 0 0 1 10 18z" clip-rule="evenodd"/>
+			</svg>
+			Arquitectura Sustentable
+		  </li>
+		  <li class="flex items-center justify-center">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-green-500 mr-2" viewBox="0 0 24 24">
+			  <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L10 15.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-9 9A1 1 0 0 1 10 18z" clip-rule="evenodd"/>
+			</svg>
+			Diseño de paisajes
+		  </li>
+		  <li class="flex items-center justify-center">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-green-500 mr-2" viewBox="0 0 24 24">
+			  <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L10 15.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-9 9A1 1 0 0 1 10 18z" clip-rule="evenodd"/>
+			</svg>
+			Arquitectura en Interiores
+		  </li>
+		  <li class="flex items-center justify-center">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-green-500 mr-2" viewBox="0 0 24 24">
+			  <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L10 15.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-9 9A1 1 0 0 1 10 18z" clip-rule="evenodd"/>
+			</svg>
+			Diseño de casas
+		  </li>
+		  <li class="flex items-center justify-center">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-green-500 mr-2" viewBox="0 0 24 24">
+			  <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L10 15.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-9 9A1 1 0 0 1 10 18z" clip-rule="evenodd"/>
+			</svg>
+			Desarrollo inmobiliario
+		  </li>
+		</ul>
+		<a href="https://wa.me/529613202460" class="inline-block bg-sky-700 text-white text-lg py-3 px-8 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 my-4">
+			¡Contactar ahora mismo!
+		  </a>
+	  </div>
+    </div>
+  </header>
+
+  <!-- Experiencia Section -->
+  <section class="bg-gray-100 py-8">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-4xl font-bold mb-6">Arquitecto Juan de Dios</h2>
+	  <div class="flex flex-col md:flex-row w-full justify-around">
+		<div class="flex flex-row md:flex-col w-full md:w-1/3 justify-around">
+			<div class="flex flex-col">
+				<p class="text-2xl md:text-5xl font-extrabold text-sky-700">+5</p>
+				<h3 class="text-base md:text-xl">Años de experiencia</h3>
+			</div>
+			<div class="flex flex-col">
+				<p class="text-2xl md:text-5xl font-extrabold text-sky-700">+10</p>
+				<h3 class="text-base md:text-xl">Proyectos Arquitectónicos</h3>
+			</div>
+			<div class="flex flex-col">
+				<p class="text-2xl md:text-5xl font-extrabold text-sky-700">+10</p>
+				<h3 class="text-base md:text-xl">Obras concluidas</h3>
+			</div>
+		  </div>
+		  	<!-- Imagen -->
+	<img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1732939288/02_a9ui0l.jpg" alt="Imagen de proyectos" class="flex w-full h-96 md:w-64 md:h-72 object-cover rounded-lg md:ml-8 mt-4 md:mt-0 shadow-xl justify-center items-center">
+	
+	  </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 px-4 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-8">Preguntas Frecuentes</h2>
+    <div class="grid grid-cols-1 gap-8">
+      <details class="bg-white shadow-md rounded-md p-6">
+        <summary class="font-semibold text-lg cursor-pointer">
+			<h2 class="text-2xl font-bold text-center">¿Cuál es la función de un arquitecto? ¿Necesito arquitecto?</h2>
+		</summary>
+        <p class="mt-4 text-gray-700">
+			El arquitecto es el máximo responsable de una obra y de todo su proceso, su trabajo es apoyarte a revisar desde las medidas del terreno, checar el tipo de suelo (para saber qué cimentación hacer), hasta mostrarte una previsualización de proyecto (maquetas o renders) y posteriormente construirlo, qué tanto te acompañe dependerá de ti ;)
+        </p>
+      </details>
+      <details class="bg-white shadow-md rounded-md p-6">
+        <summary class="font-semibold text-lg cursor-pointer">
+			<h2 class="text-2xl font-bold text-center">¿Es mejor un arquitecto o un ingeniero para construir?</h2>
+		</summary>
+        <p class="mt-4 text-gray-700">
+			Cada uno destaca en cosas diferentes, un <b>arquitecto</b> maneja los espacios ya sea para habitar o para que un negocio tenga un correcto flujo de trabajo, conviene más en el diseño de casas o departamentos, negocios o plazas comerciales, escuelas, hospitales, etc.
+		</p>
+		<p class="mt-4 text-gray-700">
+			Un <b>ingeniero civil</b> es más técnico enfocado en la infraestructura como drenajes, electrificaciones, puentes y carreteras, etc. También forman parte en el proyecto arquitectónico en etapas avanzadas como el cálculo estructural y las instalaciones además del presupuesto.
+		</p>
+		
+      </details>
+      <details class="bg-white shadow-md rounded-md p-6">
+        <summary class="font-semibold text-lg cursor-pointer">
+			<h2 class="text-2xl font-bold text-center">¿Cuánto cobra un arquitecto en Tuxtla Gutiérrez, Chiapas?</h2>
+		</summary>
+        <p class="mt-4 text-gray-700">
+			Los honorarios que un arquitecto te cobra para un proyecto arquitectónico (planos, cálculo de instalaciones y presupuesto) son un porcentaje del monto total de la obra: por ejemplo, para una obra de 1 millón de pesos (casa habitación o similares) se cobra un 5% que serían 50 mil pesos mexicanos, esto solo por el diseño y presupuesto.
+		</p>
+		<p class="mt-4 text-gray-700">
+			En el momento en que el diseño termina empieza la obra por la cual se cobra otro 10% que en el mismo caso serían $100,000 MXN. Siempre puedes negociar el costo del trabajo, quizá puedes obtener el servicio barato ;)
+		</p>
+		
+      </details>
+      <details class="bg-white shadow-md rounded-md p-6">
+        <summary class="font-semibold text-lg cursor-pointer">
+			<h2 class="text-2xl font-bold text-center">¿Cuánto cuesta construir una casa en Chiapas?</h2>
+		</summary>
+        <p class="mt-4 text-gray-700">
+			Un monto aproximado que se puede tomar como referencia es de $9,500 MXN (finales del año 2024) para acabados sencillos, ya que solo de obra gris son casi 8 mil pesos metro cuadrado. En lo personal te puedo decir que con este precio se puede alcanzar un diseño excelente.
+		</p>
+		<p class="mt-4 text-gray-700">
+			De ahí en adelante son acabados de medio a lujoso, te puedo dar un promedio de $17,500 MXN en interés medio y unos $25,000 MXN en residencial, aunque realmente depende muchísimo de la calidad y el tipo de materiales a aplicarse. Por lo cual, los dos últimos precios podrían resultar muy variables. Por eso es importante primero hacer el proyecto ejecutivo (planos y presupuesto).
+		</p>
+		
+      </details>
+    </div>
+  </section>
+
+	<!-- Servicios Section -->
+	<section id="servicios" class="bg-gray-50 py-16">
+		<div class="max-w-7xl mx-auto px-4">
+		<!-- Título de la sección -->
+		<h2 class="text-3xl font-bold text-center mb-8">Servicios de Arquitectura</h2>
+	
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+			<!-- Tarjeta grande -->
+			<div class="col-span-1 sm:col-span-2 sm:row-span-2 bg-white shadow-md rounded-md overflow-hidden relative h-[480px]">
+			<img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733023817/WhatsApp_Image_2024-11-30_at_3.16.19_PM_fccvh2.jpg" alt="Construcción" class="w-full h-full object-cover">
+			<h3 class="absolute top-4 left-4 bg-sky-400/50 backdrop-blur-2xl px-2 py-1 rounded-md text-sm font-semibold ">Construcción</h3>
+			</div>
+	
+			<!-- Tarjeta pequeña 1 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden relative h-[240px]">
+			<img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1732999465/DALL_E_2024-11-30_14.42.50_-_A_professional_architect_giving_a_consultation_to_a_client_in_a_modern_office_setting._The_architect_is_pointing_at_detailed_blueprints_on_a_table_su_ybai2b.webp" alt="Consultoría en construcción y arquitectura" class="w-full h-full object-cover">
+			<h3 class="absolute top-2 left-2 bg-sky-400/50 backdrop-blur-2xl px-2 py-1 rounded-md text-sm font-semibold">Consultoría</h3>
+			</div>
+	
+			<!-- Tarjeta pequeña 2 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden relative h-[240px]">
+			<img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733000040/2ND_PISO_f3g6y5.jpg" alt="Planos de arquitectura o Croquis" class="w-full h-full object-cover">
+			<h3 class="absolute top-2 left-2 px-2 py-1 rounded-md text-sm font-semibold bg-sky-400/50 backdrop-blur-2xl">Planos o Croquis</h3>
+			</div>
+	
+			<!-- Tarjeta pequeña 3 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden relative sm:col-span-2">
+			<img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733023681/vista-angulo-alto-boligrafo-mesa_1048944-14772277_lso0uj.avif" alt="Presupuesto de obra" class="w-full object-cover md:h-[210px]">
+			<h3 class="absolute top-2 left-2 bg-sky-400/50 backdrop-blur-2xl px-2 py-1 rounded-md text-sm font-semibold">Presupuesto</h3>
+			</div>
+		</div>
+		</div>
+	</section>
+  
+  
+	<section class="py-16">
+		<div class="max-w-7xl mx-auto px-4">
+		  <h2 class="text-4xl font-bold text-center mb-12">Especialidades</h2>
+		  
+		  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+			<!-- Card 1 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden">
+			  <img
+				src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733029673/horizontal_2_-_Foto_hozrt0.jpg"
+				alt="Arquitectura de Interiores"
+				class="w-full object-cover h-48"
+			  />
+			  <div class="p-4">
+				<h3 class="text-lg font-semibold">Arquitectura de Interiores</h3>
+			  </div>
+			</div>
+	  
+			<!-- Card 2 (más larga) -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden lg:row-span-2">
+			  <img
+				src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733029862/DALL_E_2024-11-30_23.10.36_-_A_large_residential_garden_designed_in_a_naturalistic_and_tropical_style._The_garden_features_lush_greenery_with_various_tropical_trees_such_as_palms_columx.webp"
+				alt="Arquitectura Paisajista, diseño estilo tropical"
+				class="w-full object-cover h-96"
+			  />
+			  <div class="p-4">
+				<h3 class="text-lg font-semibold">Arquitectura Paisajista</h3>
+				<p class="mt-2 text-gray-600">Diseño enfocado en la integración de la naturaleza con espacios habitables.</p>
+			  </div>
+			</div>
+	  
+			<!-- Card 3 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden">
+			  <img
+				src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733023817/WhatsApp_Image_2024-11-30_at_3.18.22_PM_nrkah4.jpg"
+				alt="Arquitectura Residencial, foto de fachada de locales y departemento"
+				class="w-full object-cover h-56"
+			  />
+			  <div class="p-4">
+				<h3 class="text-lg font-semibold">Arquitectura Residencial</h3>
+			  </div>
+			</div>
+	  
+			<!-- Card 4 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden">
+			  <img
+				src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733023816/WhatsApp_Image_2024-11-30_at_3.16.42_PM_om86qi.jpg"
+				alt="Arquitectura Comercial, Foto de interior de carnicería"
+				class="w-full object-cover h-64"
+			  />
+			  <div class="p-4">
+				<h3 class="text-lg font-semibold">Arquitectura Comercial</h3>
+			  </div>
+			</div>
+	  
+			<!-- Card 5 -->
+			<div class="bg-white shadow-md rounded-md overflow-hidden">
+			  <img
+				src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733030368/proyecto_arquitect_nico_con_paneles_solares_y_tecnolog_a_t9edqg.jpg"
+				alt="Edificio con tecnologías sustentables"
+				class="w-full object-cover h-48"
+			  />
+			  <div class="p-4">
+				<h3 class="text-lg font-semibold">Arquitectura Sostenible</h3>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  
+
+
+	<div class="relative h-screen w-full">
+		<video autoplay muted loop playsinline class="absolute inset-0 w-full h-[480px] object-cover brightness-75">
+		  <source src="https://res.cloudinary.com/dnytuotnv/video/upload/v1732998584/WhatsApp_Video_2024-11-30_at_2.28.30_PM_gxnmy9.mp4" type="video/mp4">
+		  Tu navegador no soporta el formato de video.
+		</video>
+		<div class="relative z-10 flex items-center justify-center h-full">
+		  <a href="https://www.youtube.com/@inmueblesjuan" class="text-white text-xl shadow-2xl font-bold bg-red-600 p-6 rounded-full flex flex-row">
+			<svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+				<path fill-rule="evenodd" d="M8.6 5.2A1 1 0 0 0 7 6v12a1 1 0 0 0 1.6.8l8-6a1 1 0 0 0 0-1.6l-8-6Z" clip-rule="evenodd"/>
+			  </svg>
+			  
+			Youtube: @Inmuebles Juan</a>
+		</div>
+	  </div>
+
+	  <div class="flex flex-col md:flex-row md:justify-between mx-8">
+		<div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[12px] rounded-[2.5rem] max-h-[480px] h-[480px] w-[240px] shadow-xl">
+		  <div class="w-[120px] h-[12px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+		  <div class="h-[36px] w-[2px] bg-gray-800 absolute -left-[14px] top-[90px] rounded-l-lg"></div>
+		  <div class="h-[36px] w-[2px] bg-gray-800 absolute -left-[14px] top-[140px] rounded-l-lg"></div>
+		  <div class="h-[48px] w-[2px] bg-gray-800 absolute -right-[14px] top-[110px] rounded-r-lg"></div>
+		  <div class="rounded-[2rem] overflow-hidden w-[216px] h-[456px] bg-white dark:bg-gray-800">
+			<!-- Imágenes del iPhone (eliminado el código JS de cambio de imagen) -->
+			<img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1733033992/WhatsApp_Image_2024-12-01_at_12.17.30_AM_qigrqm.jpg" alt="Imagen del iPhone 1" class="w-full h-full object-cover rounded-3xl" />
+		  </div>
+		</div>
+	  
+		<!-- Información de contacto -->
+		<div id="contacto" class="md:w-1/2 flex flex-col justify-center pl-10 mt-8">
+		  <h2 class="text-3xl font-bold mb-4 text-stone-700">Contacto</h2>
+		  <div class="mb-2 flex items-center">
+			<h3 class="text-xl font-semibold flex flex-row"><svg class="w-6 h-6 text-sky-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+				<path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
+			  </svg>
+			  Dirección</h3>
+		  </div>
+		  <p>Las reuniones de trabajo las realizo en el Meet · centro de negocios + cowork Bubicado en boulevard Antonio Pariente Algarín, de Vips Oriente 250-Segundo piso. O en su defecto visita a domicilio o predio a construir. Únicamente es con cita.</p>
+		  <div class="mb-2 flex items-center">
+			<svg class="w-6 h-6 text-sky-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+				<path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+				<path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+			  </svg>
+			<h3 class="text-xl font-semibold">Teléfono</h3>
+		  </div>
+		  <p class="flex flex-row">
+		  961 320 24 60</p>
+	  
+		  <div class="mb-2 flex items-center">
+			<svg class="w-6 h-6 text-sky-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16v-5.5A3.5 3.5 0 0 0 7.5 7m3.5 9H4v-5.5A3.5 3.5 0 0 1 7.5 7m3.5 9v4M7.5 7H14m0 0V4h2.5M14 7v3m-3.5 6H20v-6a3 3 0 0 0-3-3m-2 9v4m-8-6.5h1"/>
+			  </svg>
+			<h3 class="text-xl font-semibold">Correo electrónico</h3>
+		  </div>
+		  <p class="flex flex-row">  
+			contacto@arquijuan.com</p>
+		</div>
+	</div>
+
+	  <footer class="bg-teal-900 text-white py-6 mt-12">
+		<div class="max-w-7xl mx-auto px-4 text-center">
+		  <p class="text-sm">&copy; 2024 Todos los derechos reservados.</p>
+		  <p class="mt-2 text-sm">Diseñado y desarrollado por <strong>Juan de Dios Albores Hernandez</strong>.</p>
+		</div>
+	  </footer>
+	  
+  </section>
+  
+<!-- Botón flotante de WhatsApp -->
+<div class="fixed bottom-6 right-6 z-50">
+	<a href="https://wa.me/529613202460" target="_blank" class="bg-green-500 p-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center animate-bounce">
+	  <!-- Imagen del logo de WhatsApp -->
+	  <img src="https://res.cloudinary.com/dnytuotnv/image/upload/v1732940950/WhatsApp.svg_1_y1hi1x.png" alt="WhatsApp Logo" class="w-8 h-8">
+	</a>
+  </div>
+  <head>
+	<!-- Otros meta tags y links -->
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "FAQPage",
+	  "mainEntity": [
+		{
+		  "@type": "Question",
+		  "name": "¿Cuál es la función de un arquitecto?",
+		  "acceptedAnswer": {
+			"@type": "Answer",
+			"text": "El arquitecto es el máximo responsable de una obra y de todo su proceso..."
+		  }
+		},
+		{
+		  "@type": "Question",
+		  "name": "¿Es mejor un arquitecto o un ingeniero para construir?",
+		  "acceptedAnswer": {
+			"@type": "Answer",
+			"text": "Ambos están capacitados para la construcción, aunque cada uno destaca en cosas diferentes..."
+		  }
+		
+		}
+		{
+		  "@type": "Question",
+		  "name": "¿Cuáles son los honorarios el precio de un arquitecto?",
+		  "acceptedAnswer": {
+			"@type": "Answer",
+			"text": "Para una obra de 1 millón de pesos (casa habitación o similares) se cobra un 5% que serían 50 mil pesos mexicanos, esto solo por el diseño y presupuesto. Para la ejecución de la obra se cobra otro 10% que serían 100 mil en dicho caso. Siempre puedes negociar una precio a la baja con el arquitecto"
+		  }
+		
+		}
+	  ]
+	}
+	</script>
+  </head>
+  
+  
+</BaseLayout>
